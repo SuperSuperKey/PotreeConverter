@@ -30,3 +30,6 @@ RUN cd PotreeConverter && mkdir build && cd build; \
         -DLASZIP_LIBRARY=/usr/lib/liblaszip.so \
         -DCMAKE_INSTALL_PREFIX=/usr; \
     make && make install
+
+RUN cp -R /data/PotreeConverter/PotreeConverter/resources /usr
+RUN cd / && rm -rf PotreeConverter

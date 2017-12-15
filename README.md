@@ -11,36 +11,56 @@ Builds a potree octree from las, laz, binary ply, xyz or ptx files.
 
 ## Dependencies
 
-* [lastools(LASzip)](https://github.com/LAStools/LAStools) or [fork of lastools with cmake for LASzip](https://github.com/m-schuetz/LAStools)
+#### Linux
+* [LASzip](https://github.com/LASzip/LASzip)
+
+#### Others
 
 ## Build
 
+Note - all builds *except* linux use a fork of LASzip from LAStools. The linux build uses LASzip from here:
+
+https://github.com/LASzip/LASzip
+
 ### linux / gcc 4.9
 
-
-lastools (from fork with cmake)
+Ubuntu dependencies
 
 ```
-cd ~/dev/workspaces/lastools
-git clone https://github.com/m-schuetz/LAStools.git master
-cd master/LASzip
+apt-get update && apt-get install  -y --fix-missing --no-install-recommends\
+    build-essential \
+    ca-certificates \
+    cmake \
+    git \
+    libboost-all-dev
+
+```
+
+### build lastools
+
+```
+cd /local
+git clone https://github.com/LASzip/LASzip
+cd laszip
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 make
+make install
 
 ```
 
 PotreeConverter
 
 ```
-cd ~/dev/workspaces/PotreeConverter
-git clone https://github.com/potree/PotreeConverter.git master
-cd master
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=~/dev/workspaces/lastools/master/LASzip/dll -DLASZIP_LIBRARY=~/dev/workspaces/lastools/master/LASzip/build/src/liblaszip.so ..
-make
+cd /local
+git clone https://github.com/potree/PotreeConverter.git
+cd PotreeConverter && mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release \
+        -DLASZIP_INCLUDE_DIRS=/usr/include/laszip \
+        -DLASZIP_LIBRARY=/usr/lib/liblaszip.so \
+        -DCMAKE_INSTALL_PREFIX=/usr
+make && make install
 
 # copy ./PotreeConverter/resources/page_template to your binary working directory.
 
@@ -77,21 +97,6 @@ cmake -G "Visual Studio 15 2017 Win64" ../
 PotreeConverter
 
 ```
-# make sure you've got these environment variables set with your directory structure
-set LASZIP_INCLUDE_DIRS=D:\dev\workspaces\lastools\master\LASzip\dll
-set LASZIP_LIBRARY=D:\dev\workspaces\lastools\master\LASzip\build\src\Release\laszip.lib
-
-# checkout PotreeConverter
-cd D:/dev/workspaces/PotreeConverter
-git clone https://github.com/potree/PotreeConverter.git master
-cd master
-mkdir build
-cd build
-
-# VS2017 64bit project
-cmake -G "Visual Studio 15 2017 Win64" -DLASZIP_INCLUDE_DIRS=%LASZIP_INCLUDE_DIRS% -DLASZIP_LIBRARY=%LASZIP_LIBRARY%  ..\
-
-# copy ./PotreeConverter/resources/page_template to your binary working directory.
 
 ```
 
