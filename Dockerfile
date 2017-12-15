@@ -31,5 +31,6 @@ RUN cd PotreeConverter && mkdir build && cd build; \
         -DCMAKE_INSTALL_PREFIX=/usr; \
     make && make install
 
-RUN cp -R /data/PotreeConverter/PotreeConverter/resources /usr
-RUN cd / && rm -rf PotreeConverter
+RUN cp -R /PotreeConverter/PotreeConverter/resources /usr
+RUN cd /; \
+    rm -rf PotreeConverter
