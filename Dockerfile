@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 MAINTAINER Adam Steer <adam@synth3d.co>
 
@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install  -y --fix-missing --no-install-recommends\
 
 RUN git clone https://github.com/LASzip/LASzip.git; \
     cd LASzip; \
+    git checkout tags/3.1.0; \
     mkdir build && cd build; \
     cmake .. \
         -DCMAKE_BUILD_TYPE="Release" \
