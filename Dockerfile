@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install  -y --fix-missing --no-install-recommends\
 
 RUN git clone https://github.com/LASzip/LASzip.git; \
     cd LASzip; \
-    git checkout tags/3.1.0; \
+    git checkout tags/3.2.0; \
     mkdir build && cd build; \
     cmake .. \
         -DCMAKE_BUILD_TYPE="Release" \
