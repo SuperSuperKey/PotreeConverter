@@ -24,6 +24,8 @@ RUN mkdir PotreeConverter
 
 ADD . /PotreeConverter
 
+RUN git checkout tags/1.5
+
 RUN cd PotreeConverter && mkdir build && cd build; \
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
