@@ -28,7 +28,7 @@ RUN cd PotreeConverter && mkdir build && cd build; \
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DLASZIP_INCLUDE_DIRS=/usr/include/laszip \
-        -DLASZIP_LIBRARY=/usr/lib/liblaszip3.so \
+        -DLASZIP_LIBRARY=/usr/lib/liblaszip.so \
         -DCMAKE_INSTALL_PREFIX=/usr; \
     make && make install
 
