@@ -1,6 +1,6 @@
 FROM ubuntu:17.10
 
-MAINTAINER Adam Steer <adam@synth3d.co>
+MAINTAINER Adam Steer <adam@synth.earth>
 
 RUN apt-get update && apt-get install  -y --fix-missing --no-install-recommends\
     build-essential \
