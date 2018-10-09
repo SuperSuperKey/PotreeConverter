@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install  -y --fix-missing --no-install-recommends\
     ca-certificates \
     cmake \
     git \
-    libboost-all-dev \
-    strace
+    libboost-all-dev
 
 RUN git clone https://github.com/LASzip/LASzip.git; \
     cd LASzip; \
