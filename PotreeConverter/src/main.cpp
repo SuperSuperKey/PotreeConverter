@@ -258,9 +258,9 @@ void printArguments(PotreeArguments &a){
 			cout << "source[" << i << "]:         \t" << a.source[i] << endl;
 			++i;
 		}
-		cout << "outdir:            \t" << a.outdir << endl;
-		cout << "spacing:           \t" << a.spacing << endl;
-		cout << "diagonal-fraction: \t" << a.diagonalFraction << endl;
+		cout << "outdir 11111:            \t" << a.outdir << endl;
+		cout << "spacing 22222:           \t" << a.spacing << endl;
+		cout << "diagonal-fraction 33333: \t" << a.diagonalFraction << endl;
 		cout << "levels:            \t" << a.levels << endl;
 		cout << "format:            \t" << a.format << endl;
 		cout << "scale:             \t" << a.scale << endl;
